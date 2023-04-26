@@ -18,45 +18,41 @@ c#에서 제네릭을 사용가능한 구조의 목록은 다음과같다.
 타입을 제한할 수 있다.
 
 ```csharp
-class Util<T>{}           //기본 형태
-class Util<T1,T2>{}       //타입을 여러개 받을수도 있다.
-class Util<T> where T : Parent{}    //T의 타입을 Parent를 상속한 타입으로 제한
+class Util<T> { }           //기본 형태
+class Util<T1,T2> { }       //타입을 여러개 받을수도 있다.
+class Util<T> where T : Parent { }    //T의 타입을 Parent를 상속한 타입으로 제한
+class Util<T> where T : class { }     //T의 타입을 클래스로 제한
+class Util<T> where T : struct { }    //T의 타입을 구조체로 제
 class Util<T1, T2> where T1 : Parent where T2 : Parent { }   //다중 제한도 가능하다.
 ```
 
-또한 제네릭 오버라이드도 가능하다.
+또한 제네릭도 매개변수처럼 오버라이드가 가능하다.
 
-### 제네릭 클래스
+### 제네릭의 사용예시
 
 ```csharp
+//제네릭 클래스
 class Class<T> {}
-```
 
-- 보통 여러 타입을 지원하는 데이터 형태를 만드는데 쓰인다.
-    - 이미 List<T>나 Dictionary<TKey,TValue> 등의 클래스를 정의하는데 사용됬다.
-
-### 제네릭 구조체
-
-```csharp
+//제네릭 구조체
 struct Struct<T> {}
-```
 
-- 클래스와 비슷하게 데이터형태를 구현하는데 쓰인다.
-
-### 제네릭 인터페이스
-
-```csharp
+//제네릭 인터페이스
 interface Interface<T> {}
-```
 
-### 제네릭 메서드
-
-```csharp
+//제네릭 메서드
 void Function<T>() {}
+
+//제네릭 대리자
+delegate TResult Func<out TResult>();
 ```
 
-- 여러가지 반환형식을 지원하기위해 쓰이는경우가 많다. 예) GetComponent
-- 매개변수의 타입을 제외할때는 그냥 부모클래스로 받는게 더편할때가 많다.
+유니티에서 제공해주는 기능들도 제네릭을 사용하는경우가 있다.
+
+- List<T>
+- T Getcomponent<T>()
+- delegate TResult Func<TResult>()
+- 등등…
 
 ## 제네릭의 사용이유
 
