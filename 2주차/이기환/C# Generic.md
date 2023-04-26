@@ -67,7 +67,7 @@ public T Return<T>(T value)
 
 ### 유니티에서 사용되는 제네릭 메서드
 
-유니티에서 많이 사용되는 대표적인 제네릭 메서드로 GetComponent 메서드가 있다. 유니티에서 각 컴포넌트에 접급할 때 GetComponentRigidbody, GetComponentTransform 등 각각의 메서드로 접근하기 힘들기 때문에 GetComponent<T> 로 해결할 수 있다.
+유니티에서 많이 사용되는 대표적인 제네릭 메서드로 GetComponent 메서드가 있다. 유니티에서 각 컴포넌트에 접근할 때 GetComponentRigidbody, GetComponentTransform 등 각각의 메서드로 접근하기 힘들기 때문에 GetComponent<T> 로 해결할 수 있다.
 
 ## 그 외 내장된 제네릭 클래스 기능
 
