@@ -80,3 +80,11 @@ public T Return<T>(T value)
 - List<T>
 - Stack<T>
 - Queue<T>
+
+## 직접 제네릭을 사용한 경험
+
+메서드나 클래스 등에 직접 제네릭을 적용한 경험은 없지만 List<T> 기능을 지방기능대회에서 랭킹시스템을 구현할 때 사용했었다. 닉네임과 점수를 저장하고 있는 Rank 클래스를 생성한 뒤
+
+`public List<Rank> ranking = new List<Rank>();`
+
+으로 Rank 클래스를 리스트 형태로 관리하여 랭킹 시스템을 구현한 적 있다.
