@@ -26,7 +26,7 @@ class Util<T> where T : struct { }    //T의 타입을 구조체로 제
 class Util<T1, T2> where T1 : Parent where T2 : Parent { }   //다중 제한도 가능하다.
 ```
 
-또한 제네릭도 매개변수처럼 오버라이드가 가능하다.
+또한 제네릭도 매개변수처럼 오버로딩이 가능하다.
 
 ### 제네릭의 사용예시
 
