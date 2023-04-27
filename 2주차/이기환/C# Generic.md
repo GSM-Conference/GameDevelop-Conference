@@ -75,11 +75,23 @@ public T Return<T>(T value)
 
 ### 예시
 
-- ArrayList<T>
 - LinkedList<T>
+    - 구성요소 간의 연결을 이용해 구현한 이중 연결 리스트로 크기가 가변적이다.
+    - LinkedList의 구성요소는 LinkedListNode<T>로 구성되어 있다.
+    - LinkedListNode<T>는 생성자, 자기를 담고있는 LinkedList, 자신의 이전 노드와 다음 노드, 자신의 Value 프로퍼티를 포함하고 있다.
+    - 대표적인 기능으로 First, Last, AddFirst, AddLast, Clear 등이 있다.
 - List<T>
+    - 가장 기본적인 자료구조로 크기가 가변적이다.
+    - 주로 동적으로 생성되고 삭제되는 자료를 저장할 때 쓰인다.
+    - 대표적인 기능으로 Add, Insert, Remove, Clear 등이 있다.
 - Stack<T>
+    - 후입선출(LIFO) 방식의 자료구조로  크기가 가변적이다.
+    - 가장 최근에 입력된 값을 처리해야할 때 사용할 수 있다.
+    - 대표적인 기능으로 Push, Pop, Peek 등이 있다.
 - Queue<T>
+    - 선입선출(FIFO) 방식의 자료구조로 크기가 가변적이다.
+    - 입력된 값을 입력된 순서데로 처리해야할 때 사용할 수 있다.
+    - 대표적인 기능으로 Enqueue, Dequeue, Peek 등이 있다.
 
 ## 직접 제네릭을 사용한 경험
 
