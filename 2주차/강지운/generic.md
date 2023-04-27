@@ -65,7 +65,7 @@ delegate TResult Func<out TResult>();
 
 C#은 아니지만 자바프로젝트때 GetComponent함수를 구현하면서 쓴적이있다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c223246e-9ea3-4af3-b62a-3fbbacff1137/Untitled.png)
+![Untitled](https://github.com/GSM-Conference/GameDevelop-Conference/blob/JW/2%EC%A3%BC%EC%B0%A8/%EA%B0%95%EC%A7%80%EC%9A%B4/Untitled.png)
 
 ## 유니티 자료형
 
