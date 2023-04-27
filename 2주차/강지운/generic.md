@@ -58,3 +58,15 @@ delegate TResult Func<out TResult>();
 
 - 여러가지 타입을 지원함으로서 재사용성을 늘린다.
 - 캐스팅횟수를 줄일수있다.
+
+# 내 사용경험
+
+## 자바 프로젝트
+
+C#은 아니지만 자바프로젝트때 GetComponent함수를 구현하면서 쓴적이있다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c223246e-9ea3-4af3-b62a-3fbbacff1137/Untitled.png)
+
+## 유니티 자료형
+
+제네릭을 직접정의해본적은 아직 없지만, 여러가지 유니티 기본제공기능에서 응용해보았다.
