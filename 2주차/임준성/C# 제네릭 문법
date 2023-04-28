@@ -17,7 +17,7 @@
 
     // T는 Reference 타입
     class MyClass<T> where T : class
-
+ 
     // T는 디폴트 생성자를 가져야 함
     class MyClass<T> where T : new() 
 
