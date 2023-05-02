@@ -12,13 +12,13 @@ marp: false
 ---
 
 > ## ⚙️ **작업**
-- **컬링** : 렌더링 할 필요 없는 요소를 렌더링 과정에서 제외해 부하를 줄이는 작업
+- **컬링** : 렌더링 할 필요 없는 요소를 렌더링 과정에서 제외해 부하를 줄이는 작업<br>
 ![](https://mblogthumb-phinf.pstatic.net/MjAxOTA1MjZfMjgx/MDAxNTU4ODY0ODUxMzkz.45LbQdjY89xQz-o8N7LziOyjDuyt2gY58b0gzG9X9k0g.ASuY8Gx-QhgsF5DZc21dClWl-zVrM1OzY1YaIIXT6F8g.JPEG.canny708/untitled_hermet.jpg?type=w800)
 
-- **렌더링** : 3D 모델을 계산하고 2D모니터 상에 그리는 작업
+- **렌더링** : 3D 모델을 계산하고 2D모니터 상에 그리는 작업<br>
 ![](https://blog.kakaocdn.net/dn/1TlJI/btroStscQ9E/hnDd4pmLkAgeGIGrDIPk0k/img.png)
 
-- **포스트프로세싱** : 기존에 렌더링 된 작업물에 효과를 더하는 작업
+- **포스트프로세싱** : 기존에 렌더링 된 작업물에 효과를 더하는 작업<br>
 ![](https://www.codeproject.com/KB/GDI/antialias/antialias.png)
 ![](https://docs.unity3d.com/Packages/com.unity.postprocessing@2.0/manual/images/screenshot-ao.jpg)
 
