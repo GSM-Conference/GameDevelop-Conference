@@ -120,7 +120,7 @@ Key와 Value로 이루어진 자료구조
 
 ## 형태
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/81a35267-88fa-44a1-92b5-959e2ed75a8e/Untitled.png)
+![https://velog.velcdn.com/images%2Ffalling_star3%2Fpost%2F31116191-e4b8-48ac-b709-b02a15f442b7%2F444.JPG](https://velog.velcdn.com/images%2Ffalling_star3%2Fpost%2F31116191-e4b8-48ac-b709-b02a15f442b7%2F444.JPG)
 
 딕셔너리는 한 인덱스에 Key와 Value가 대응되어 들어있는 자료구조이다.
 
@@ -140,7 +140,7 @@ class MonsterBook
 {
     static Dictionary<string, string> information = new Dictionary<string, string>()
     {
-        {"멍멍이","월월월!"},
+        {"멍멍이","I love you"},
         {"요정","맛있겠다~"},
         {"작은 새","흰머리오목눈이" },
         {"해골","666"}
@@ -154,16 +154,34 @@ class MonsterBook
 }
 ```
 
-# 페어(Pair)
+# 해시셋(HashSet)
 
-Key와 Value로 이루어진 자료구조
+List<T>와 유사하지만 중복된값을 허용하지않는 자료구조이다.
 
-유니티에서는 KeyValuePair<TKey,TValue>클래스로 구현되어있다.
+유니티에서는 HashSet<T> 클래스로 구현할수있다.
 
 ## 특징
 
-- 딕셔너리를 구현하는데 쓰였다.
+- 정보를 순서대로 저장하지않는다.(인덱싱불가능)
+- 원소를 삽입할때 bool Add(T item); 함수를 사용한다.
 
 ## 사용이유
 
-- 두가지정보를 한변수에 담을수있다.
+- 원소의 중복을 방지하기위해
+
+# C# 자료구조의 인터페이스 상속여부
+
+|  | List | LinkedList | Stack | Queue | Dictionary | HashSet |
+| --- | --- | --- | --- | --- | --- | --- |
+| ICollection<T> |            O |            O |            X |            X |            O |            O |
+| ISerialzable |            X |            O |            X |            X |            O |            O |
+| IDeserializationCallback |            X |            O |            X |            X |            O |            O |
+
+### 공통적으로 상속하는 인터페이스
+
+- ICollection
+- IEnumerable
+- IEnumerable<T>
+- IReadOnlyCollection<T>
+
+## 인터페이스의 역할
