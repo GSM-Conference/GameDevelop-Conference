@@ -79,15 +79,29 @@ void UsePortion()
 }
 ```
 
-## 이외의 자료구조
-- LinkedList
-- SortedList
-
-### SortedList
-List에 추가로 Key값이 들어있다. 요소를 추가할 때 키값을 기준으로 정렬한다. <br>
-해시맵과 유사하다.
+### 이외의 자료구조(Deque)
+Double-Ended Queue로, 한 방향으로만 삽입, 삭제가 되는것과 달리 양방향으로 가능하다.
 ```CSharp
-var ranking = new SortedList<int, string>;
-...
-DisplayWiner(ranking[1]);
+// 정의
+public class Deque<T>
+{
+    public T PopBack() {...}
+    public T PopFront() {...}
+    public void PushBack() {...}
+    public void PushFront() {...}
+}
+```
+*ex.디펜스게임에서 범위에 나갔다가 들어온 적이 있다면 먼저 공격)*
+```CSharp
+OnTriggerEnter2D(Collision2D collision)
+{
+    if(collision.GetComponent<Enemy>().IsEntered)
+    {
+        deque.PushFront(collision.gameObject);
+    }
+    else
+    {
+        deque.PushBack(collision.gameObject);
+    }
+}
 ```
