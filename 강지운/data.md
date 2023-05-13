@@ -30,7 +30,7 @@
 ### 특징
 
 - 메모리의 물리적위치가 서로 떨어져있을수있다.
-- 원소의 추가나 삭제시 참조몇개만 바꾸면되기때문에 빠르다.
+- 원소의 추가나 삭제시 참조몇개만 바꾸면 되기때문에 빠르다.
 - 원소참조시 참조를 여러번해야되기때문에 느리다.
 
 ### 사용이유
@@ -174,7 +174,7 @@ List<T>와 유사하지만 중복된값을 허용하지않는 자료구조이다
 |  | List | LinkedList | Stack | Queue | Dictionary | HashSet |
 | --- | --- | --- | --- | --- | --- | --- |
 | ICollection<T> |            O |            O |            X |            X |            O |            O |
-| ISerialzable |            X |            O |            X |            X |            O |            O |
+| ISerializable |            X |            O |            X |            X |            O |            O |
 | IDeserializationCallback |            X |            O |            X |            X |            O |            O |
 
 ### 공통적으로 상속하는 인터페이스
@@ -185,3 +185,10 @@ List<T>와 유사하지만 중복된값을 허용하지않는 자료구조이다
 - IReadOnlyCollection<T>
 
 ## 인터페이스의 역할
+
+- ICollection : 모든 컬렉션의 기반이되는 인터페이스
+- ICollection<T> : 모든 제네릭 컬렉션의 기반이되는 인터페이스
+- ISerializable : 이진 또는 XML serialization을 사용하여 serialize할 수 있는 인터페이스
+- IDeserializationCallback : deserialization이 완료되면 클래스에 알리는 인터페이스
+- IEnumerable : 열거자제공(foreach 사용가능)
+- IReadOnlyCollection<T> : 개수를 셀수있다.
