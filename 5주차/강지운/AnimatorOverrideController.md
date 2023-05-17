@@ -4,20 +4,35 @@
 
 AnimatorOverrideController는 로직이 구현되어있는 AnimatorController를 참조해 사용되는 애니메이션을 다른 애니메이션에 대응시켜 동일한 로직의 여러가지 AnimatorController를 빠르게 만들수있다.
 
-## 특징
+# 구조
 
-- RuntimeAnimatorController를 상속하기때문에 Animator의 Controller로서 참조될 수 있다.
-- 비어있는 애니메이션 클립은 자신이 참조한 AnimatorController의 클립으로 자동설정된다.
-- 실제 오버라이딩과 다르게 확장이 불가능하다.
+**AnimatorOverrideController** 는 **RuntimeAnimatorController** 클래스를 상속한다.
 
-## 사용예시
+## RuntimeAnimatorController
 
-동일한 로직을 쓰는 게임캐릭터를 여러개 구현할때, 애니메이션만 바꿔서 빠르게 만들수있다.
+### 역할
 
-하지만 확장이 불가능하기때문에 한계가있다.
+- **Animator** 컴포넌트의 runTimeAnimatorController로서 참조되어 애니메이션 로직을 제공한다.
+- **AnimatorOverrideController** 와 **AnimatorController** 의 부모클래스이다.
 
-- AOS,RPG장르등의 플레이어 캐릭터는 홀드스킬이나 패링스킬등, 로직이 필요한 애니메이션으로 인해 활용이 불가능하다.
+### 구성요소
 
-![Untitled](1.png)
+- string name : 인스펙터상의 이름을 반환한다. (없으면 “”)
+- AnimationClip[] animationClips : 컨트롤러에 포함된 애니메이션클립들을 반환한다.
 
-![Untitled](2.png)
+## AnimatorController
+
+### 역할
+
+**Animator** 에서쓰일 로직을 구현하는 클래스이다.
+
+## AnimatorOverrideController
+
+### 역할
+
+runTimeAnimatorController 를 참조하여 사용되는 AnimationClip을 다른변수로 대체할수있다.
+
+### 구성요소
+
+- int overridesCount{ get; } : 오버라이드한 클립의 개수를 반환한다.
+- AnimationClip[] animationClips{ get; } : 오버라이드한 애니메이션들(오버라이드컨트롤러에 들어간)을 반환
