@@ -2,13 +2,15 @@
 
 이 두가지 클래스는 유니티에서 대리자를 편리하게 사용하기위해 제공하는 클래스이다.
 
+Unity에서 Event가 일어날때 실행시킬 Acition들을 모아둔다고 생각할수있다.
+
 # UnityEvent
 
 UnityAction을 여러개참조하면서 원하는시점에 실행시킬수있는 관리용 클래스이다.
 
 [serializedField] 등을 통해 인스펙터에 표시할수있으며 인스펙터에서 원하는함수를 넣어줄수있다.
 
-## 기본기능
+## 실행기능
 
 UnityEvent가 참조하는 이벤트들은 내부적으로 object배열에 저장된다.
 
@@ -20,7 +22,10 @@ UnityEvent가 참조하는 이벤트들은 내부적으로 object배열에 저�
 
 ### void AddListner(UnityAction call)
 
-call을 참조하기 시작한다. (이미 참조하고있어도 중첩가능하다.)
+call이 가지고있는 메서드를 참조하기 시작한다. 
+
+- 이미 참조하고있어도 중첩가능하다.
+- call 객체를 참조하는게아닌 call이 현재 가지고있는 메서드를 참조하기때문에 추후 call의 변화를 반영하지않는다.
 
 ### void RemoveListner(UnityAction call)
 
@@ -28,7 +33,7 @@ call을 참조하기 시작한다. (이미 참조하고있어도 중첩가능하
 
 ### void RemoveAllListner()
 
-자신이 참조하는 모든 UnityEvent에 대한 참조를 종료한다.
+자신이 참조하는 모든 UnityAction에 대한 참조를 종료한다.
 
 ### 이벤트관리기능
 
@@ -61,6 +66,22 @@ index번째 이벤트가 참조하는 메서드를가진 객체를 반환한다.
 delegate를 통해 구현된 편의용 클래스이다.
 
 UnityEvent가 참조하여 사용한다.
+
+## 기본기능
+
+### 대입방법
+
+UnityAction에 함수를 대입할때는 함수이름을 그대로 대입해주면된다.
+
+![Untitled](Untitled2.png)
+
+또한 함수를 여러개 대입하기위해 += 대입연산자도 사용가능하다.
+
+## 실행기능
+
+### void Invoke()
+
+UnityAction을 실행시킨다. UnityAction이 요구하는 매개변수에따라 이 함수의 매개변수가 달라진다.
 
 # 사용예시
 
