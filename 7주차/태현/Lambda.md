@@ -44,4 +44,9 @@ Action SayHello = () => Console.WriteLine("Hello");
 Action<string> SaySomething = (string message) => Console.WriteLine(message);
 SayHello()
 SaySomething("World!");
+/*
+결과
+Hello
+World!
+*/
 ```
