@@ -77,7 +77,7 @@ Instantiate(prefab,(spawnPos ?? transform));
 
 객체가 null인지 검사한다.
 
-==과 다르게 오버로딩이 불가능하기때문에 더 빠르다.
+ReferenceEquals를 통한 비교와 같다.
 
 ```csharp
 Action act = null;
@@ -105,16 +105,84 @@ print(act is null);  //true
 
 ## fake null
 
-## Unity.Object의 객체비교
+fake null 현상은 C++ 네이티브 객체가 존재하지않는 C# 래핑객체를 null로 표시하는 방식이다.
+
+Unity.Object의 코드를 살펴보면,
+
+![Untitled](Object-operaor-%3D%3D.png)
+
+비교연산자가 이렇게 오버로딩되어있는것을 볼수있다.
+
+CompareBaseObjects에 매개변수로 비교대상들을 넘기는데, 함수의 코드를 찾아보면,
+
+![Untitled](Object-CompareBaseObjects.png)
+
+103번줄과 104번줄에서 Unity.Object타입을 object타입으로 변환해,
+
+오버로딩하지않은 비교연산자를 호출해 C# 객체가 존재하는지 여부를 flag와 flag2에 넣는다.
+
+---
+
+105번줄에서 C#객체가 둘다 null일경우 같은 값임으로 true를 반환한다.
+
+---
+
+110번줄부터 118번줄까지는 만약 두 C#객체중 하나만 null일경우,
+
+null이 아닌 C#객체의 C++ 네이티브 객체가 존재한다면 false를, 존재하지않는다면 true를 반환한다.
+
+C++ 네이티브 객체가 존재하지 않는다면 C# 객체도 null과 다름없음으로 null과 null을 같다고 판단해야하기 때문이다.
+
+ 
+
+---
+
+112번줄과 117번줄에서 네이티브객체의 존재여부를 확인하는함수인 IsNativeObjectAlive가 어떤함수를 보면
+
+![Untitled](Object-IsNativeObjectAlive.png)
+
+133번줄에서 GetCachedPtr()의 포인터가 유효한지 확인하는데, 이포인터는
+
+![Untitled](Object-GetCachedPtr.png)
+
+위에 나왔던 네이티브객체의 포인터값을 받아오는걸 알수있다.
+
+따라서 포인터가 유효하다면(IntPtr.Zero가 아니면) 바로 true를 반환한다.
+
+---
+
+138번줄에서는 
+
+## Unity.Object의 null 확인
 
 ### ==
 
-### Equals()
+위의 fake null 항목에서도 설명했듯이 C++ 네이티브객체가 null인지 확인한다.
 
-### ReferenceEquals()
+### Equals
 
-### GetInstanceID()
+![Untitled](Object-Equals.png)
 
-### GetHashCode()
+==과 동일하게 CompareBaseObjects 메서드를 통해 비교하는것을 알수있다.
 
-## Unity.Object의 null 확인
+### bool 형변환
+
+![Untitled](Object-operator-bool.png)
+
+Unity.Object는 bool 형식으로 변환하 간편하게 null인지 확인하는 방법을 지원한다.
+
+CompareBaseObjects 메서드를 사용하기때문에 결과는 ==과 같다.
+
+## Unity.Object가 오버로딩하지않은 확인방법
+
+아래의 방법들은 오버로딩이되지않아 C++ 네이티브 객체가 아닌 C#객체를 직접 확인한다.
+
+따라서 GC가 회수하기전의 객체는 네이티브 객체가 파괴되도 null이 아니라고 뜬다.
+
+하지만 오버로딩이 되지않는만큼 속도는 약간 빨라진다.
+
+- ReferenceEquals()
+- ?. 과 ?[].
+- ??=
+- ??
+- is null
