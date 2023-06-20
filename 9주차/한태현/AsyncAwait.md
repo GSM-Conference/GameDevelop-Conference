@@ -37,26 +37,21 @@
 
 #### 사용 예
 ```Csharp
-static async Task Main(string[] args) // await를 사용하기 위한 async Main함수
+static void Main(string[] args)
 {
-    Task t = SomethingEvent();
-    for(int i = 0; i < 10; i++)
+    SomethingWork(); // 대기하지 않고 진행된다.
+    for(int i = 0; i < 10; ++i)
     {
         Console.WriteLine("Main is working.");
-        Thread.Sleep(100);
+        Thread.Sleep(100); // 100ms(0.1초)동안 대기
     }
-    await t; // 여기에 막히지 않고 아래로 진행된다.
-    for (int i = 0; i < 10; i++)
-    {
-        Console.WriteLine("Main is working.");
-        Thread.Sleep(100);
-    }
+    // 결과 : 대략 5번 찍었을 때 Something work.가 출력된다.
 }
 
-static async Task SomethingEvent()
+static async void SomethingWork()
 {
-    await Task.Delay(1000); // 1초동안 대기
-    Console.WriteLine("Something working.");
+    await Task.Delay(500);
+    Console.WriteLine("Something work.");
 }
 
 ```
