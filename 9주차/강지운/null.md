@@ -28,11 +28,62 @@ c#에서는 null을 편하게 확인하고 활용하는 문법을 제공한다.
 
 ### ?. 과 ?[].
 
+?. 과 ?[]. 은 null 조건 연산자라고 불린다.
+
+특정 변수의 메서드에 접근할때 변수의 값이 null이면 접근을막아 NullReferenceExceptionError가 발생하지않게하는 문법이다.
+
+```csharp
+GetComponent<Health>()?.TakeDamage(100);  //Health가 존재한다면 데미지를 입힌다.
+
+public List<Health> target;
+for(int i = 0; i < target.Count;i++)
+{
+		target?[i].TakeDamage(30);
+}
+//target들중 null이 아닌 대상에게 데미지를 입힌다.
+```
+
 ### ??=
+
+??=은  null 병합 연산자라고 불린다.
+
+할당할 변수의 값이 null일때만 할당을 한다.
+
+```csharp
+GameObject target;
+Collider[] cols = Physics.OverlapSphere(transform.position, 10);
+foreach(Collider c in cols)
+{
+		target ??= c?.transform;
+}
+
+//null이 아닌 값 하나만 할당된다.
+```
 
 ### ??
 
+??는 반환하고자하는값이 null일경우 다른값으로 대체하여 반환하는 문법이다.
+
+```csharp
+public Transform spawnPos;
+public GameObject prefab;
+
+Instantiate(prefab,(spawnPos ?? transform));
+//spawnPos에 prefab을 소환한다.
+//spawnPos가 null이라면 transform에 소환한다.
+```
+
 ### is null 사용
+
+객체가 null인지 검사한다.
+
+==과 다르게 오버로딩이 불가능하기때문에 더 빠르다.
+
+```csharp
+Action act = null;
+
+print(act is null);  //true
+```
 
 # 유니티의 null 체크
 
