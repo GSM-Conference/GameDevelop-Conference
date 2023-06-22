@@ -47,7 +47,7 @@ for(int i = 0; i < target.Count;i++)
 
 ??=은  null 병합 연산자라고 불린다.
 
-할당할 변수의 값이 null일때만 할당을 한다.
+값을 할당당할 변수가 null일때만 할당을 한다.
 
 ```csharp
 GameObject target;
@@ -111,7 +111,7 @@ Unity.Object의 코드를 살펴보면,
 
 ![Untitled](Object-operaor-%3D%3D.png)
 
-비교연산자가 이렇게 오버로딩되어있는것을 볼수있다.
+비교연산자가 이렇게 오버라이딩되어있는것을 볼수있다.
 
 CompareBaseObjects에 매개변수로 비교대상들을 넘기는데, 함수의 코드를 찾아보면,
 
@@ -119,7 +119,7 @@ CompareBaseObjects에 매개변수로 비교대상들을 넘기는데, 함수의
 
 103번줄과 104번줄에서 Unity.Object타입을 object타입으로 변환해,
 
-오버로딩하지않은 비교연산자를 호출해 C# 객체가 존재하는지 여부를 flag와 flag2에 넣는다.
+오버라이이딩하지않은 비교연산자를 호출해 C# 객체가 존재하는지 여부를 flag와 flag2에 넣는다.
 
 ---
 
@@ -149,10 +149,6 @@ C++ 네이티브 객체가 존재하지 않는다면 C# 객체도 null과 다름
 
 따라서 포인터가 유효하다면(IntPtr.Zero가 아니면) 바로 true를 반환한다.
 
----
-
-138번줄에서는 
-
 ## Unity.Object의 null 확인
 
 ### ==
@@ -169,17 +165,17 @@ C++ 네이티브 객체가 존재하지 않는다면 C# 객체도 null과 다름
 
 ![Untitled](Object-operator-bool.png)
 
-Unity.Object는 bool 형식으로 변환하 간편하게 null인지 확인하는 방법을 지원한다.
+Unity.Object는 bool 형식으로 변환해 간편하게 null인지 확인하는 방법을 지원한다.
 
-CompareBaseObjects 메서드를 사용하기때문에 결과는 ==과 같다.
+내부적으로 CompareBaseObjects 메서드를 통해 구현되었기때문에 결과는 ==과 같다.
 
-## Unity.Object가 오버로딩하지않은 확인방법
+## fake null이 적용되지않은 null 확인방법들
 
-아래의 방법들은 오버로딩이되지않아 C++ 네이티브 객체가 아닌 C#객체를 직접 확인한다.
+아래의 방법들은 오버라이딩이되지않아 C++ 네이티브 객체가 아닌 C#객체를 직접 확인한다.
 
 따라서 GC가 회수하기전의 객체는 네이티브 객체가 파괴되도 null이 아니라고 뜬다.
 
-하지만 오버로딩이 되지않는만큼 속도는 약간 빨라진다.
+하지만 오버라이딩이 되지않는만큼 속도는 약간 빨라진다.
 
 - ReferenceEquals()
 - ?. 과 ?[].
