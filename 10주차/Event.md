@@ -33,6 +33,7 @@ class Program
 }
 ```
 `event` 키워드가 없어도 작동은 할 수 있다. 하지만 그냥 EventHandler 변수라고 하는것보단, 이벤트라고 명시해 줌으로써 이 변수가 콜백으로 호출되는 이벤트라고 알려 줄 수 있다.
+(const와 같이 없어도 작동은 하지만, 정확도를 올려주는 것과 같음)
 
 명시해주지 않은 경우 <br>
 ![](https://github.com/GSM-Conference/GameDevelop-Conference/assets/63224377/f24135c1-aa82-41c5-9974-013ad7be36ad)
