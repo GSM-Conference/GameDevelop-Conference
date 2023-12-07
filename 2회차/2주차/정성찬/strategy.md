@@ -14,12 +14,104 @@ ex) switch문으로 새로운 것을 추가 해줄 때마다 case를 추가해�
 
 ex) 전략 패턴 사용 코드
 
-![](./Ex2.png)
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-![](./Ex3.png)
+public class WeaponController : MonoBehaviour
+{
+    IWeapon weapon;
+    public Weapon lastWeapon;
+    public void Init(IWeapon weapon)
+    {
+        this.weapon = weapon;
+    }
 
-- GunWeapon스크립트는 무기들의 부모로 함수들을 상속한다
+    private void Start()
+    {
+        if( weapon == null )
+            gameObject.AddComponent<Default>();
+    }
 
-![](./Ex4.png)
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            weapon.Attack();
+        }
 
-- 오버라이드로 내용을 다르게한다
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Destroy(lastWeapon);
+            gameObject.AddComponent<Sword>();
+        }
+    }
+}
+``````
+
+
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public interface IWeapon
+{
+    public void Attack();
+}
+public abstract class Weapon : MonoBehaviour
+{
+    public abstract void SetWeapon();
+}
+
+```
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Default : Weapon, IWeapon
+{
+    public void Attack()
+    {
+        Debug.Log("태권도 얍!얍!얍!"); //Attack의 내용을 다르게 만든다
+    }
+    void Start()
+    {
+        SetWeapon();
+    }
+
+    public override void SetWeapon()
+    {
+        GetComponent<WeaponController>().lastWeapon = this;
+        GetComponent<WeaponController>().Init(this);
+    }
+}
+
+```
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Sword : Weapon, IWeapon
+{
+    void Start()
+    {
+        SetWeapon();    
+    }
+    public void Attack()
+    {
+        Debug.Log("검도 얍!얍!얍!");   //Attack의 내용을 다르게 만든다
+    }
+
+    public override void SetWeapon()
+    {
+        GetComponent<WeaponController>().lastWeapon = this;
+        GetComponent<WeaponController>().Init(this);
+    }
+}
+
+```
