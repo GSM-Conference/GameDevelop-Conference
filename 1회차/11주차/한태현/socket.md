@@ -25,7 +25,7 @@
 public static void Main(string[] args)
 {
     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-    IPEndPoint ep = new IPEndPoint(IPAddress.Loopback, 8888); // 주소 : 자신, 포트 : 임의로 정한 수
+    IPEndPoint ep = new IPEndPoint(IPAddress.Loopback, 8888); // 주소 : 나 자신, 포트 : 임의로 정한 수
 
     sock.Connect(ep); // 서버 주소로 연결
     Console.WriteLine("Connected to server.");
